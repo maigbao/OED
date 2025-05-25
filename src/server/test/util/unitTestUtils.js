@@ -1,3 +1,4 @@
+// SHL: recreateDB is not used.
 const { chai, mocha, expect, app, testDB, testUser, recreateDB } = require('../common');
 const chaiHttp = require('chai-http');
 chai.use(chaiHttp);
@@ -45,6 +46,7 @@ function applyMutation(base, mutation = {}) {
  * @param {Array} options.cases - Array of test case descriptors.
  */
 function generateUnitValidationTests({ app, method = 'post', endpoint, Unit, getId, options = {}, cases }) {
+	// SHL: As commented in the old unitParamsTest, it would be good to check for needed params.
 	cases.forEach(({ name, expectedStatus, mutation }) => {
 		mocha.it(name, async () => {
 			const id = await getId();
